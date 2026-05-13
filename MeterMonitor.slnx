@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="MeterMonitor.Android/MeterMonitor.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MeterMonitor.Browser/MeterMonitor.Browser.csproj" />
+  <Project Path="MeterMonitor.Desktop/MeterMonitor.Desktop.csproj" />
+  <Project Path="MeterMonitor.iOS/MeterMonitor.iOS.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MeterMonitor/MeterMonitor.csproj" />
+</Solution>
