@@ -2,7 +2,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:MeterMonitor.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="MeterMonitor.Views.MainPage">
-    Welcome to Avalonia!
+        x:Class="MeterMonitor.Views.MainPage"
+        x:DataType="vm:MainPageViewModel">
+    <Grid>
+        <Button Content="登录" Classes="Round" HorizontalAlignment="Center"
+                Command="{Binding RootLayout.GoForward}">
+            <Button.CommandParameter>
+                <vm:LoginPageViewModel/>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
 </UserControl>

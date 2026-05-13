@@ -8,9 +8,5 @@
         x:Class="MeterMonitor.Views.MainWindow"
         Icon="/Assets/logo.ico" Title="Meter Monitor"
         Width="500" Height="850">
-    <v:MainView>
-        <v:MainView.DataContext>
-            <vm:MainViewModel/>
-        </v:MainView.DataContext>
-    </v:MainView>
+    <v:RootLayout DataContext="{x:Static vm:RootLayoutViewModel.Instance}"/>
 </Window>

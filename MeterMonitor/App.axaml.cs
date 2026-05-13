@@ -19,19 +19,19 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new RootLayoutViewModel()
             };
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {
             singleViewFactoryApplicationLifetime.MainViewFactory =
-                () => new MainView { DataContext = new MainViewModel() };
+                () => new RootLayout { DataContext = new RootLayoutViewModel() };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new MainView
+            singleViewPlatform.MainView = new RootLayout
             {
-                DataContext = new MainViewModel()
+                DataContext = new RootLayoutViewModel()
             };
         }
 

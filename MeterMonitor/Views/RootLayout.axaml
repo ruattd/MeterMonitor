@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:MeterMonitor.ViewModels"
+        xmlns:v="using:MeterMonitor.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MeterMonitor.Views.RootLayout"
+        x:DataType="vm:RootLayoutViewModel">
+    <Design.DataContext>
+        <vm:RootLayoutViewModel/>
+    </Design.DataContext>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Height="50" Background="{DynamicResource SystemAccentColor}">
+            <Grid ColumnDefinitions="50,*,50" Opacity="{Binding TitleBarOpacity}">
+                <Grid.Transitions><Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:.1"/>
+                </Transitions></Grid.Transitions>
+                <Grid.RenderTransform>
+                    <TranslateTransform X="{Binding TitleBarTranslateX}" Y="0">
+                        <TranslateTransform.Transitions><Transitions>
+                            <DoubleTransition Property="X" Duration="0:0:.4" Easing="{StaticResource SpringEasing}"/>
+                        </Transitions></TranslateTransform.Transitions>
+                    </TranslateTransform>
+                </Grid.RenderTransform>
+                <Button Grid.Column="0" Classes="Round IconOnly" IsVisible="{Binding CanBack}"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding GoBack}">
+                    <PathIcon Data="{StaticResource IconArrowLeft}"/>
+                </Button>
+                <TextBlock Grid.Column="1" Text="{Binding CurrentPage.Title}" FontSize="20"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Grid.Column="2" Classes="Round IconOnly"
+                        IsVisible="{Binding CurrentPage.SubmitCommand, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding CurrentPage.SubmitCommand}">
+                    <PathIcon Data="{StaticResource IconArrowLeft}"/>
+                </Button>
+            </Grid>
+        </Border>
+        <TransitioningContentControl Content="{Binding CurrentPage}">
+            <TransitioningContentControl.PageTransition>
+                <CompositePageTransition>
+                    <CrossFade Duration="0:0:.2"/>
+                </CompositePageTransition>
+            </TransitioningContentControl.PageTransition>
+            <TransitioningContentControl.DataTemplates>
+                <DataTemplate DataType="vm:MainPageViewModel">
+                    <v:MainPage/>
+                </DataTemplate>
+                <DataTemplate DataType="vm:LoginPageViewModel">
+                    <v:LoginPage/>
+                </DataTemplate>
+            </TransitioningContentControl.DataTemplates>
+        </TransitioningContentControl>
+    </DockPanel>
+</UserControl>

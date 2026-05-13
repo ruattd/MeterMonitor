@@ -3,13 +3,83 @@
              xmlns:local="using:MeterMonitor"
              x:Class="MeterMonitor.App"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <SpringEasing x:Key="SpringEasing" Mass="1.15" Stiffness="100" Damping="15" InitialVelocity="10"/>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="Resources/Colors.axaml"/>
+                <MergeResourceInclude Source="Resources/IconPaths.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme>
+            <FluentTheme.Palettes>
+                <ColorPaletteResources x:Key="Light"
+                        Accent="#ff66ccff"
+                        AltHigh="White"
+                        AltLow="White"
+                        AltMedium="White"
+                        AltMediumHigh="White"
+                        AltMediumLow="White"
+                        BaseHigh="Black"
+                        BaseLow="#ffc6ecff"
+                        BaseMedium="#ff64a6be"
+                        BaseMediumHigh="#ff237793"
+                        BaseMediumLow="#ff448ea9"
+                        ChromeAltLow="#ff237793"
+                        ChromeBlackHigh="Black"
+                        ChromeBlackLow="#ffc6ecff"
+                        ChromeBlackMedium="#ff237793"
+                        ChromeBlackMediumLow="#ff64a6be"
+                        ChromeDisabledHigh="#ffc6ecff"
+                        ChromeDisabledLow="#ff64a6be"
+                        ChromeGray="#ff448ea9"
+                        ChromeHigh="#ffc6ecff"
+                        ChromeLow="#ffddfaff"
+                        ChromeMedium="#ffd8f7ff"
+                        ChromeMediumLow="#ffddfaff"
+                        ChromeWhite="White"
+                        ListLow="#ffd8f7ff"
+                        ListMedium="#ffc6ecff"
+                        RegionColor="#fffef6ff"/>
+                <ColorPaletteResources x:Key="Dark"
+                        Accent="#ff4a94b9"
+                        AltHigh="Black"
+                        AltLow="Black"
+                        AltMedium="Black"
+                        AltMediumHigh="Black"
+                        AltMediumLow="Black"
+                        BaseHigh="White"
+                        BaseLow="#ff204252"
+                        BaseMedium="#ff86a3b0"
+                        BaseMediumHigh="#ff9fbbc8"
+                        BaseMediumLow="#ff537281"
+                        ChromeAltLow="#ff9fbbc8"
+                        ChromeBlackHigh="Black"
+                        ChromeBlackLow="#ff9fbbc8"
+                        ChromeBlackMedium="Black"
+                        ChromeBlackMediumLow="Black"
+                        ChromeDisabledHigh="#ff204252"
+                        ChromeDisabledLow="#ff86a3b0"
+                        ChromeGray="#ff6c8b99"
+                        ChromeHigh="#ff6c8b99"
+                        ChromeLow="#ff062036"
+                        ChromeMedium="#ff0d293d"
+                        ChromeMediumLow="#ff1a3a4b"
+                        ChromeWhite="White"
+                        ListLow="#ff0d293d"
+                        ListMedium="#ff204252"
+                        RegionColor="#ff001122"/>
+            </FluentTheme.Palettes>
+        </FluentTheme>
+        <StyleInclude Source="Resources/ControlStyles.axaml"/>
     </Application.Styles>
+
 </Application>

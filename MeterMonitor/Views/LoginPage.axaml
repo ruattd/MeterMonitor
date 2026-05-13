@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:MeterMonitor.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="900"
+        x:Class="MeterMonitor.Views.LoginPage"
+        x:DataType="vm:LoginPageViewModel">
+    <Grid>
+        <DockPanel IsVisible="{Binding Website, Converter={x:Static ObjectConverters.IsNotNull}}">
+            <NativeWebView Source="{Binding Website}"/>
+        </DockPanel>
+
+        <!-- Dialog overlay -->
+        <Border Background="#80000000" Opacity="{Binding WebsiteDialogOpacity}"
+                IsVisible="{Binding IsWebsiteDialogShow}" Padding="24">
+            <Border.Transitions><Transitions>
+                <DoubleTransition Property="Opacity" Duration="0:0:.1"/>
+            </Transitions></Border.Transitions>
+            <Border Background="{DynamicResource TextControlBackground}" CornerRadius="8"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Padding="24" MinWidth="300" BoxShadow="0 8 16 0 #40000000">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="请输入电表信息网址" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="打开企业微信，找到电表充值页面，点击右上角菜单项复制链接并粘贴到此处"
+                            TextWrapping="WrapWithOverflow"/>
+                    <TextBox Text="{Binding UserInputWebsite}"/>
+                    <TextBlock Text="{Binding UserInputErrorInfo}" Foreground="Red"
+                            IsVisible="{Binding UserInputErrorInfo, Converter={x:Static ObjectConverters.IsNotNull}}"
+                            TextWrapping="WrapWithOverflow"/>
+                    <StackPanel Orientation="Horizontal" Spacing="8"
+                            HorizontalAlignment="Right">
+                        <Button Classes="Round" Content="OK"
+                                Command="{Binding ConfirmWebsiteInputCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace MeterMonitor.Views;
 
-public partial class MainView : UserControl
+public partial class LoginPage : UserControl
 {
-    public MainView()
+    public LoginPage()
     {
         InitializeComponent();
     }
