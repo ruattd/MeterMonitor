@@ -1,8 +1,6 @@
-﻿using System.Runtime.Versioning;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Browser;
-using ReactiveUI.Avalonia;
 using MeterMonitor;
 
 internal sealed partial class Program
@@ -12,7 +10,6 @@ internal sealed partial class Program
 #if DEBUG
         .WithDeveloperTools()
 #endif
-        .UseReactiveUI()
         .StartBrowserAppAsync("out");
 
     public static AppBuilder BuildAvaloniaApp()

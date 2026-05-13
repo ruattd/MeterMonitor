@@ -3,10 +3,14 @@
         xmlns:vm="using:MeterMonitor.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="using:MeterMonitor.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:v="using:MeterMonitor.Views"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="850"
         x:Class="MeterMonitor.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="MeterMonitor">
-    <views:MainView />
+        Icon="/Assets/logo.ico" Title="Meter Monitor"
+        Width="500" Height="850">
+    <v:MainView>
+        <v:MainView.DataContext>
+            <vm:MainViewModel/>
+        </v:MainView.DataContext>
+    </v:MainView>
 </Window>

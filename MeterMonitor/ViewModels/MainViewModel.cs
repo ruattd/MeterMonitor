@@ -1,6 +1,9 @@
-﻿namespace MeterMonitor.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public class MainViewModel : ViewModelBase
+namespace MeterMonitor.ViewModels;
+
+public partial class MainViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    [ObservableProperty]
+    public partial ViewModelBase CurrentPage { get; set; } = new MainPageViewModel();
 }

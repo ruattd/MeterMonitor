@@ -1,6 +1,5 @@
 ﻿using System;
 using Avalonia;
-using ReactiveUI.Avalonia;
 
 namespace MeterMonitor.Desktop;
 
@@ -21,6 +20,5 @@ sealed class Program
             .WithDeveloperTools()
 #endif
             .WithInterFont()
-            .UseReactiveUI()
             .LogToTrace();
 }

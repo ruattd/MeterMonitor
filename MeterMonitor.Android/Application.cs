@@ -2,7 +2,6 @@
 using Android.Runtime;
 using Avalonia;
 using Avalonia.Android;
-using ReactiveUI.Avalonia;
 
 namespace MeterMonitor.Android
 {
@@ -16,8 +15,7 @@ namespace MeterMonitor.Android
         protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
         {
             return base.CustomizeAppBuilder(builder)
-                .WithInterFont()
-                .UseReactiveUI();
+                .WithInterFont();
         }
     }
 }
