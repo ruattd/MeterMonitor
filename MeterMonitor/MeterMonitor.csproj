@@ -19,13 +19,6 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="CommunityToolkit.Mvvm" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\LoginPage.axaml.cs">
-        <DependentUpon>LoginPage.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
+        <PackageReference Include="CommunityToolkit.Mvvm"/>
     </ItemGroup>
 </Project>
