@@ -13,7 +13,7 @@ public partial class RootLayoutViewModel : ViewModelBase
     public static RootLayoutViewModel Instance { get; } = new();
 
     [ObservableProperty]
-    public partial PageViewModel CurrentPage { get; private set; } = new MainPageViewModel();
+    public partial PageViewModel CurrentPage { get; private set; } = null!;
 
     [ObservableProperty]
     public partial bool CanBack { get; private set; } = false;
@@ -22,7 +22,7 @@ public partial class RootLayoutViewModel : ViewModelBase
     public partial double TitleBarTranslateX { get; private set; } = 0;
 
     [ObservableProperty]
-    public partial double TitleBarOpacity { get; private set; } = 1;
+    public partial double NavOpacity { get; private set; } = 1;
 
     private readonly Stack<PageViewModel> _navigationStack = new();
 
@@ -43,13 +43,13 @@ public partial class RootLayoutViewModel : ViewModelBase
         Dispatcher.UIThread.Invoke(async () =>
         {
             TitleBarTranslateX = translateX;
-            TitleBarOpacity = 0;
+            NavOpacity = 0;
             await Task.Delay(TimeSpan.FromSeconds(.1));
             CurrentPage = target;
             CanBack = _navigationStack.Count > 0;
             TitleBarTranslateX = -translateX;
             await Task.Delay(TimeSpan.FromSeconds(.1));
-            TitleBarOpacity = 1;
+            NavOpacity = 1;
             TitleBarTranslateX = 0;
         });
     }
@@ -65,5 +65,10 @@ public partial class RootLayoutViewModel : ViewModelBase
         GoBack = new RelayCommand(() => Navigate(null));
         GoForward = new RelayCommand<PageViewModel>(target => Navigate(target));
         SetCurrent = new RelayCommand<PageViewModel>(target => Navigate(target, true));
+    }
+
+    static RootLayoutViewModel()
+    {
+        Instance.CurrentPage = new MainPageViewModel();
     }
 }

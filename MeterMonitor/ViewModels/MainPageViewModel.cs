@@ -1,8 +1,8 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+using MeterMonitor.Views;
 
 namespace MeterMonitor.ViewModels;
 
-public partial class MainPageViewModel : PageViewModel
+public partial class MainPageViewModel : PageViewModel<MainPage>
 {
     public MainPageViewModel()
     {

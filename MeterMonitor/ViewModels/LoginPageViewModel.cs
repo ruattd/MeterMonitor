@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MeterMonitor.Views;
 
 namespace MeterMonitor.ViewModels;
 
-public partial class LoginPageViewModel : PageViewModel
+public partial class LoginPageViewModel : PageViewModel<LoginPage>
 {
     [ObservableProperty]
     public partial Uri? Website { get; private set; } = null;

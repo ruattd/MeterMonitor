@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.Graphics;
 using Avalonia.Android;
 
 namespace MeterMonitor.Android;
@@ -10,6 +11,4 @@ namespace MeterMonitor.Android;
     Icon = "@drawable/icon",
     MainLauncher = true,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
-public class MainActivity : AvaloniaMainActivity
-{
-}
+public class MainActivity : AvaloniaMainActivity;
