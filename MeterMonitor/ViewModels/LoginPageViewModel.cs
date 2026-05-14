@@ -30,6 +30,13 @@ public partial class LoginPageViewModel : PageViewModel<LoginPage>
         SubmitCommand = StartGetInfoCommand;
     }
 
+    public override void OnLeavePage()
+    {
+        Website = null;
+        WebsiteDialogOpacity = 1;
+        IsWebsiteDialogShow = true;
+    }
+
     [RelayCommand]
     private void StartGetInfo()
     {
@@ -39,16 +46,17 @@ public partial class LoginPageViewModel : PageViewModel<LoginPage>
     private void ConfirmWebsiteInput()
     {
         Uri uri;
-        try
-        {
-            uri = new Uri(UserInputWebsite);
-        }
+        try { uri = new Uri(UserInputWebsite); }
         catch (UriFormatException ex)
         {
-            var msg = ex.Message;
-            if (msg.StartsWith("Invalid URI")) msg = msg[13..];
-            UserInputErrorInfo = $"无效的 URI。\n详细信息: {msg}";
-            return;
+            try { uri = new Uri($"http://{UserInputWebsite}"); }
+            catch (UriFormatException)
+            {
+                var msg = ex.Message;
+                if (msg.StartsWith("Invalid URI")) msg = msg[13..];
+                UserInputErrorInfo = $"无效的 URI。\n详细信息: {msg}";
+                return;
+            }
         }
         Dispatcher.UIThread.Invoke(async () =>
         {

@@ -45,8 +45,10 @@ public partial class RootLayoutViewModel : ViewModelBase
             TitleBarTranslateX = translateX;
             NavOpacity = 0;
             await Task.Delay(TimeSpan.FromSeconds(.1));
+            CurrentPage.OnLeavePage();
             CurrentPage = target;
             CanBack = _navigationStack.Count > 0;
+            CurrentPage.OnEnterPage();
             TitleBarTranslateX = -translateX;
             await Task.Delay(TimeSpan.FromSeconds(.1));
             NavOpacity = 1;

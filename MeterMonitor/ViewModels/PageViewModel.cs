@@ -15,6 +15,10 @@ public abstract partial class PageViewModel : ViewModelBase
     public partial ICommand? SubmitCommand { get; protected set; } = null;
 
     public abstract UserControl Content { get; }
+
+    public virtual void OnEnterPage() {}
+
+    public virtual void OnLeavePage() {}
 }
 
 public abstract class PageViewModel<TPageView> : PageViewModel
